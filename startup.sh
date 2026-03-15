@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source $HOME/miniconda3/bin/activate
-conda activate cam_streaming
-cd $HOME/Projects/multicam_monitor
+conda activate cam
+cd $HOME/Projects/camera-streamer-rpi
 python -u cam.py
 
