@@ -6,8 +6,8 @@ After=network-online.target
 [Service]
 Type=simple
 User=%i
-WorkingDirectory=/home/%i/Projects/multicam_monitor
-ExecStart=/home/%i/Projects/multicam_monitor/startup.sh
+WorkingDirectory=/home/%i/Projects/camera-streamer-rpi
+ExecStart=/home/%i/Projects/camera-streamer-rpi/startup.sh
 Restart=on-failure
 
 [Install]
