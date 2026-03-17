@@ -1,3 +1,8 @@
+# sudo cp <this file> /etc/systemd/system/
+# sudo systemctl daemon-reload
+# sudo systemctl enable <filename>@<username>.service
+# sudo systemctl start <filename>@<username>.service
+
 [Unit]
 Description=Run UVC camera streaming service at boot
 Wants=network-online.target
