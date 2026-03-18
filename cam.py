@@ -8,14 +8,17 @@ import psutil
 import socket
 import ctypes
 import uuid
+import os
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
-
 hostname = socket.gethostname()
-cameras = {
-    "cam0": {"device": "/dev/video0", "size": (1920, 1080), "fps": 30},
-    # "cam1": {"device": "/dev/video2", "size": (1920, 1080), "fps": 30},
+
+_all_cameras = {
+    "cam0": {"device": "/dev/video0", "size": (1280, 720), "fps": 30},
+    "cam1": {"device": "/dev/video2", "size": (1280, 720), "fps": 30},
 }
+cameras = {k: v for k, v in _all_cameras.items() if os.path.exists(v["device"])}
+
 MAX_FRAME_SIZE = 10 * 1024 * 1024  # 10 MB
 
 cam_session = {cam_id: None for cam_id in cameras}
