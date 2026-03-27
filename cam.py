@@ -14,10 +14,16 @@ app = Flask(__name__, static_folder="static", template_folder="templates")
 hostname = socket.gethostname()
 
 _all_cameras = {
-    "cam0": {"device": "/dev/video0", "size": (1280, 720), "fps": 30},
-    "cam1": {"device": "/dev/video2", "size": (1280, 720), "fps": 30},
+    "cam0": {"device": "/dev/video0", "fps": 30},
+    "cam1": {"device": "/dev/video2", "fps": 30},
 }
 cameras = {k: v for k, v in _all_cameras.items() if os.path.exists(v["device"])}
+
+_size = (1920, 1080)
+if len(cameras) > 1:
+    _size = (1280, 720)
+for cam in cameras.values():
+    cam["size"] = _size
 
 MAX_FRAME_SIZE = 10 * 1024 * 1024  # 10 MB
 
